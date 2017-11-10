@@ -86,6 +86,7 @@ public class RxGames {
                     public void onNext(GoldsChangeEntity o) {
                         if (o.getCode().equals(RxHttpStatus.Success)) {
                             if (mGoldsChangeSuccessListener != null) {
+                                RxToastTool.show(mContext,"----");
                                 mGoldsChangeSuccessListener.goldsChangeSuccessData(o.getData());
                             }
                         } else {
