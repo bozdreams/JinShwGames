@@ -66,11 +66,10 @@ public class RxGames {
      * @CreateDate: 2017/11/8 上午11:42;
      * @Version: 1.0;
      */
-    public void getGoldsChange( String spServiceNo, String userNo, String golds, String remark, String deviceNo, String outAppid, String outAppname, GoldsChangeSuccessListener goldsChangeSuccessListener, GoldsChangeFailListener goldsChangeFailListener) {
+    public void getGoldsChange(String userNo, String golds, String remark, String deviceNo, String outAppid, String outAppname, GoldsChangeSuccessListener goldsChangeSuccessListener, GoldsChangeFailListener goldsChangeFailListener) {
         mGoldsChangeSuccessListener = goldsChangeSuccessListener;
         mGoldsChangeFailListener = goldsChangeFailListener;
         params.clear();
-        params.put("spServiceNo", spServiceNo);
         params.put("userNo", userNo);
         params.put("golds", golds);
         params.put("deviceNo", deviceNo);
@@ -86,7 +85,6 @@ public class RxGames {
                     public void onNext(GoldsChangeEntity o) {
                         if (o.getCode().equals(RxHttpStatus.Success)) {
                             if (mGoldsChangeSuccessListener != null) {
-                                RxToastTool.show(mContext,"----");
                                 mGoldsChangeSuccessListener.goldsChangeSuccessData(o.getData());
                             }
                         } else {
